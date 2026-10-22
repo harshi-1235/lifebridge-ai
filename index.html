@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#153b35" />
+  <meta name="description" content="LifeBridge AI — one platform for life's essential needs." />
+  <title>LifeBridge AI — Your life, connected</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="LifeBridge AI home">
+        <span class="brand-mark">L<span>+</span></span>
+        <span class="brand-copy"><strong>LifeBridge</strong><small>AI · LIFE, CONNECTED</small></span>
+      </a>
+      <div class="profile-mini">
+        <div class="avatar" id="avatarInitials">A</div>
+        <div><strong id="sidebarName">Alex Morgan</strong><small id="sidebarStage">College student</small></div>
+        <button class="icon-btn tiny" id="editProfileShortcut" title="Edit profile" aria-label="Edit profile">⌄</button>
+      </div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span>▦</span> Overview</button>
+        <button class="nav-item" data-view="radar"><span>◎</span> Life Radar <span class="nav-count" id="radarCount">4</span></button>
+        <button class="nav-item" data-view="tasks"><span>✓</span> My tasks</button>
+        <button class="nav-item" data-view="resources"><span>↗</span> Resources</button>
+        <button class="nav-item" data-view="profile"><span>◉</span> My profile</button>
+        <button class="nav-item" data-view="privacy"><span>♧</span> Privacy & safety</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✳</span><strong>Small steps count.</strong><p>Build a life that works for you, one next step at a time.</p></div>
+        <div class="sidebar-foot"><span class="status-dot"></span> Starter demo <span class="version">v0.1</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb">Your space <span>/</span> <strong id="breadcrumbLabel">Overview</strong></div>
+        <div class="topbar-actions"><span class="today-label" id="todayLabel"></span><button class="avatar top-avatar" id="topAvatar" aria-label="Open profile">A</button></div>
+      </header>
+      <div class="content" id="mainContent">
+        <section class="welcome-row">
+          <div><p class="eyebrow">YOUR PERSONAL LIFE HUB</p><h1>Good morning, <span id="greetingName">Alex</span> <span class="wave">✳</span></h1><p class="subheading" id="welcomeCopy">A little clarity for everything life brings your way.</p></div>
+          <button class="primary-btn" id="addTaskTop"><span>＋</span> Add a task</button>
+        </section>
+
+        <section class="hero-card">
+          <div class="hero-copy"><span class="pill light-pill">✦ YOUR LIFE RADAR</span><h2>Make space for<br />what matters next.</h2><p id="heroDescription">Your next steps, thoughtfully brought together in one calm place.</p><button class="hero-btn" data-go="radar">Explore my Life Radar <span>→</span></button></div>
+          <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orb-core">L<span>+</span></div><div class="floating-card float-top"><span class="float-icon mint">✓</span><span><b>One step at a time</b><small>Progress, not pressure</small></span></div><div class="floating-card float-bottom"><span class="float-icon peach">✦</span><span><b>Made for your life</b><small>Relevant to you</small></span></div><div class="spark spark-one">✳</div><div class="spark spark-two">·</div></div>
+        </section>
+
+        <section class="stat-grid" aria-label="Your progress">
+          <article class="stat-card"><div class="stat-icon lilac">◎</div><div><p>Open actions</p><strong id="statOpen">04</strong><small>On your radar</small></div></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><p>Completed</p><strong id="statDone">02</strong><small>Steps you've taken</small></div></article>
+          <article class="stat-card"><div class="stat-icon orange">↗</div><div><p>Life areas</p><strong id="statAreas">03</strong><small>In your focus</small></div></article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel radar-panel">
+            <div class="panel-heading"><div><p class="eyebrow">PRIORITIZED FOR YOU</p><h3>On your radar</h3></div><button class="text-btn" data-go="radar">View all <span>→</span></button></div>
+            <div id="radarPreview" class="action-list"></div>
+          </article>
+          <article class="panel focus-panel">
+            <div class="panel-heading"><div><p class="eyebrow">YOUR PERSONAL MIX</p><h3>Life areas</h3></div><button class="icon-btn tiny" data-go="profile" aria-label="Edit life areas">↗</button></div>
+            <p class="muted">Your dashboard adapts to the things you care about.</p>
+            <div class="area-list" id="areaList"></div>
+            <button class="outline-btn full-btn" data-go="profile">Personalize my space</button>
+          </article>
+        </section>
+
+        <section class="panel timeline-panel">
+          <div class="panel-heading"><div><p class="eyebrow">KEEP YOUR MOMENTUM</p><h3>Coming up</h3></div><button class="text-btn" data-go="tasks">See tasks <span>→</span></button></div>
+          <div class="timeline-list" id="upcomingList"></div>
+        </section>
+        <footer class="page-footer">LifeBridge AI <span>·</span> A calmer way to manage life's essentials. <span class="demo-note">Demo data stays in this browser.</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="taskDialog" class="modal">
+    <form id="taskForm" method="dialog">
+      <div class="modal-heading"><div><p class="eyebrow">MAKE IT ACTIONABLE</p><h2>Add a task</h2></div><button class="icon-btn" type="button" data-close="taskDialog" aria-label="Close">×</button></div>
+      <label>Task title<input id="taskTitle" name="title" required maxlength="100" placeholder="e.g. Prepare scholarship documents" /></label>
+      <label>Life area<select id="taskArea" name="area"><option>Learning</option><option>Career</option><option>Money</option><option>Family & care</option><option>Wellbeing</option><option>Everyday life</option></select></label>
+      <label>Due date<input id="taskDue" name="due" type="date" /></label>
+      <label>Priority<select id="taskPriority" name="priority"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></label>
+      <div class="modal-actions"><button class="outline-btn" type="button" data-close="taskDialog">Cancel</button><button class="primary-btn" type="submit">Save task</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
